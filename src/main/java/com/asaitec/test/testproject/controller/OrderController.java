@@ -17,13 +17,14 @@ import com.asaitec.test.testproject.dto.ProductDTO;
 import com.asaitec.test.testproject.service.OrderService;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/order") // recomended -> "/orders"
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
 
-	@PostMapping(value = "/createOrder")
+	// Create an Order
+	@PostMapping(value = "/createOrder") // recomended -> erase (value = "/createOrder")
 	public ResponseEntity<String> createOrder(@RequestBody OrderDTO request) {
 		try {
 			orderService.createOrder(request);
@@ -34,7 +35,8 @@ public class OrderController {
 
 	}
 
-	@PostMapping(value = "/addProducts")
+	// Create Products for an Order
+	@PostMapping(value = "/addProducts") // recomended -> "/products"
 	public ResponseEntity<String> addProducts(@RequestBody List<ProductDTO> products) {
 		try {
 			orderService.createProducts(products);
@@ -46,7 +48,8 @@ public class OrderController {
 
 	}
 
-	@PutMapping(value = "/productPrice")
+	// Edit an Order
+	@PutMapping(value = "/productPrice") // recomended -> "/<order-id>"
 	public ResponseEntity<String> updateProductPrice(
 			@RequestBody PriceUpdateRequest priceUpdateRequest) {
 		try {
